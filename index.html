@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gugugaga AI 🤡</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101018;color:#fff;font-family:system-ui,sans-serif}
+header{padding:18px;background:#1b1b29;border-bottom:1px solid #333}
+header h2{margin:0;color:#c4a1ff}
+header p{margin:5px 0 0;color:#aaa;font-size:13px}
+#chat{height:calc(100dvh - 155px);overflow-y:auto;padding:16px}
+.msg{padding:12px 15px;border-radius:16px;margin:10px 0;max-width:85%;white-space:pre-wrap;overflow-wrap:anywhere}
+.bot{background:#262638;border-bottom-left-radius:4px}
+.user{background:#8054d8;margin-left:auto;border-bottom-right-radius:4px}
+#form{position:fixed;bottom:0;left:0;right:0;padding:12px;background:#1b1b29;display:flex;gap:8px}
+input{min-width:0;flex:1;border:1px solid #444;background:#101018;color:white;padding:13px;border-radius:12px;font-size:16px;outline:none}
+button{border:0;border-radius:12px;background:#a47aff;color:#160d25;padding:0 17px;font-weight:bold;font-size:16px}
+</style>
+</head>
+<body>
+<header>
+<h2>🤡 gugugaga AI</h2>
+<p>Teman ngobrol paling absurd sedunia</p>
+</header>
+<div id="chat">
+<div class="msg bot">WOIII BROOO 🗣️🔥 Gue gugugaga! Mau ngobrol apa nih? 😎</div>
+</div>
+<form id="form">
+<input id="input" placeholder="Ketik sesuatu, bro..." autocomplete="off" required>
+<button type="submit">Kirim</button>
+</form>
+<script>
+const chat = document.getElementById('chat');
+const input = document.getElementById('input');
+const form = document.getElementById('form');
+
+const replies = [
+"WKWKWK 😭 bro lu ada-ada aja.",
+"ANJAYYY 🗣️🔥 ceritain lagi dong!",
+"HAH? 💀 otak gue loading dulu bentar.",
+"Valid sih, bro 🤝 tapi coba kita pikirin lagi.",
+"BUSYETTT 😭 gue nggak siap dengernya.",
+"Gue dengerin, bro. Lanjutkan 🍿"
+];
+
+function addMessage(text, who) {
+  const el = document.createElement('div');
+  el.className = 'msg ' + who;
+  el.textContent = text;
+  chat.appendChild(el);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const text = input.value.trim();
+  if (!text) return;
+  addMessage(text, 'user');
+  input.value = '';
+  const reply = replies[Math.floor(Math.random() * replies.length)];
+  setTimeout(() => addMessage(reply, 'bot'), 500);
+});
+</script>
+</body>
+</html>
